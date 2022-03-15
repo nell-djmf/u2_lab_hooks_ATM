@@ -5,12 +5,22 @@ const Account = (props) => {
   let [amount, setAmount] = useState(0)
   let [balance, setBalance] = useState(0)
 
-  const handleClick = (e) => {
+  const handleDepositClick = (e) => {
     e.preventDefault()
-    if (isNaN(amount)) {
+    if (isNaN(amount) || amount < 0) {
       console.log('Not a number')
     } else {
       setBalance(balance + Number(amount))
+    }
+    setAmount(0)
+  }
+  
+  const handleWithdrawClick = (e) => {
+    e.preventDefault()
+    if (isNaN(amount) || amount < 0) {
+      console.log('Not a number')
+    } else {
+      setBalance(balance - Number(amount))
     }
     setAmount(0)
   }
@@ -39,7 +49,13 @@ const Account = (props) => {
           className="btn"
           type="submit"
           value="Deposit"
-          onClick={handleClick}
+          onClick={handleDepositClick}
+        />
+        <input
+          className="btn"
+          type="submit"
+          value="Withdraw"
+          onClick={handleWithdrawClick}
         />
       </div>
     </div>
