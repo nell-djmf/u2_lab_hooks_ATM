@@ -8,7 +8,7 @@ const Account = (props) => {
   const handleDepositClick = (e) => {
     e.preventDefault()
     if (isNaN(amount) || amount < 0) {
-      console.log('Not a number')
+      alert('Not a number')
     } else {
       setBalance(balance + Number(amount))
     }
@@ -18,7 +18,9 @@ const Account = (props) => {
   const handleWithdrawClick = (e) => {
     e.preventDefault()
     if (isNaN(amount) || amount < 0) {
-      console.log('Not a number')
+      alert('Not a number')
+    } else if (amount > balance) {
+      alert(`You can't withdraw that much`)
     } else {
       setBalance(balance - Number(amount))
     }
